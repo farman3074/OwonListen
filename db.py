@@ -7,7 +7,7 @@ db_connection_str = os.environ['DB_CONNECT_STR_DEV']
 engine = create_engine(db_connection_str,connect_args={"ssl":{"ssl_ca": "/etc/ssl/cert.pem"}})
 
 
-def update_db_lastping(content):
+def update_db(content):
   with engine.connect() as conn:
     query = "insert into rawdata (rawjson) values (" + content + ")"
     result = conn.execute(text(query))
