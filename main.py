@@ -1,5 +1,5 @@
 from flask import Flask,request,jsonify
-from db import update_db_lastping
+#from db import update_db_lastping
 
 # initialize Connector object
 #connector = Connector()
@@ -33,8 +33,8 @@ app = Flask(__name__)
 def index():
     content = jsonify(request.json)
     print(content)
-    result = update_db_lastping(content)
-    return result
+    #result = update_db_lastping(content)
+    return content
 
 
 app.run(host='0.0.0.0', port=8080)
