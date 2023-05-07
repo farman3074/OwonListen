@@ -29,12 +29,18 @@ from flask import Flask,request,jsonify
 app = Flask(__name__)
 
 
-@app.route('/',methods = ['POST'])
+@app.route('/',methods = ['POST','GET'])
 def index():
-    content = jsonify(request.json)
-    print(content)
-    #result = update_db_lastping(content)
-    return content
+  if request.method == 'POST':
+    return 'we got a POST'
+  else:
+    return 'SOMETHING ELSE'
+  #content = jsonify(request.json)
+  #print(content)
+  #result = update_db_lastping(content)
+  #return content
 
+if __name__ == "__main__" :
+  app.run(host="0.0.0.0", debug=True)
 
-app.run(host='0.0.0.0', port=8080)
+#app.run(host='0.0.0.0', port=8080)
