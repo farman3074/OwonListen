@@ -33,7 +33,8 @@ app = Flask(__name__)
 def index():
   if request.method == 'POST':
   #  return 'we got a POST'
-    content = jsonify(request.json)
+    content = request.get_json()
+    #content = jsonify(request.json)
   #print(content)
     result = update_db_lastping(content)
     return result
