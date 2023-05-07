@@ -1,5 +1,5 @@
 from flask import Flask,request,jsonify
-#from db import update_db_lastping
+from db import update_db_lastping
 
 # initialize Connector object
 #connector = Connector()
@@ -32,7 +32,11 @@ app = Flask(__name__)
 @app.route('/',methods = ['POST','GET'])
 def index():
   if request.method == 'POST':
-    return 'we got a POST'
+  #  return 'we got a POST'
+    content = jsonify(request.json)
+  #print(content)
+    result = update_db_lastping(content)
+    return result
   else:
     return 'SOMETHING ELSE'
   #content = jsonify(request.json)
